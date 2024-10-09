@@ -72,29 +72,30 @@ services:
     command: ["--shardsvr", "--replSet", "shard-replica-set-2", "--bind_ip_all", "--port", "40023"]
     ports:
       - 40023:40023
+      
   mongo-shard-3-rs-1:
     image: mongo:7
     container_name: mongo-shard-3-rs-1
     hostname: mongo-shard-3-rs-1
-    command: ["--shardsvr", "--replSet", "shard-replica-set-2", "--bind_ip_all", "--port", "40021"]
+    command: ["--shardsvr", "--replSet", "shard-replica-set-3", "--bind_ip_all", "--port", "40031"]
     ports:
-      - 40021:40021
+      - 40031:40031
 
   mongo-shard-3-rs-2:
     image: mongo:7
     container_name: mongo-shard-3-rs-2
     hostname: mongo-shard-3-rs-2
-    command: ["--shardsvr", "--replSet", "shard-replica-set-2", "--bind_ip_all", "--port", "40022"]
+    command: ["--shardsvr", "--replSet", "shard-replica-set-3", "--bind_ip_all", "--port", "40032"]
     ports:
-      - 40022:40022
+      - 40032:40032
 
   mongo-shard-3-rs-3:
     image: mongo:7
     container_name: mongo-shard-3-rs-3
     hostname: mongo-shard-3-rs-3
-    command: ["--shardsvr", "--replSet", "shard-replica-set-2", "--bind_ip_all", "--port", "40023"]
+    command: ["--shardsvr", "--replSet", "shard-replica-set-3", "--bind_ip_all", "--port", "40033"]
     ports:
-      - 40023:40023
+      - 40033:40033
       
   mongos-shard:
     image: mongo:7
