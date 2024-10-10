@@ -47,7 +47,7 @@ mongosh --port 40031
 ```
 ```
 rs.initiate({
- "_id" : "shard-replica-set-2",
+ "_id" : "shard-replica-set-3",
  members : [
  {"_id" : 0, host : "mongo-shard-3-rs-1:40031"},
  {"_id" : 1, host : "mongo-shard-3-rs-2:40032"},
