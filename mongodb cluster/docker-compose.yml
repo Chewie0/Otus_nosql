@@ -9,7 +9,7 @@ services:
     ports:
       - 40001:40001
     volumes:
-      - mongo-configsvr-1:/opt2/mongo_shard
+      - mongo-configsvr-1:/opt2/mongo_shard/
 
   mongo-configsvr-2:
     image: mongo:7
@@ -130,5 +130,19 @@ services:
     ports:
       - 40100:27017
 
-
+volumes:
+  mongo-configsvr-1:
+  mongo-configsvr-2:
+  mongo-configsvr-3:
+  mongo-shard-1-rs-1:
+  mongo-shard-1-rs-2:
+  mongo-shard-1-rs-3:
+  mongo-shard-2-rs-1:
+  mongo-shard-2-rs-2:
+  mongo-shard-2-rs-3:  
+  mongo-shard-3-rs-1:
+  mongo-shard-3-rs-2:
+  mongo-shard-3-rs-3:
+  
+  
   
