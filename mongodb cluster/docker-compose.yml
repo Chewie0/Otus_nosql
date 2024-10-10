@@ -101,9 +101,9 @@ services:
     image: mongo:7
     container_name: mongos-shard
     hostname: mongos-shard
-    command: mongos --configdb config-replica-set/mongo-configsvr-1:40001,mongo-configsvr-2:40002,mongo-configsvr-3:40003 --bind_ip_all
+    command: ["mongos" "--configdb" "config-replica-set/mongo-configsvr-1:40001,mongo-configsvr-2:40002,mongo-configsvr-3:40003" "--bind_ip_all"]
     ports:
-      - "40100:27017"
+      - 40100:27017
 
 
   
