@@ -27,6 +27,8 @@ rs.initiate({
  ]
 });
 ```
+![image](https://github.com/user-attachments/assets/14194df2-9397-4b69-9352-342ebc4932f2)
+
 
 ```
 mongosh --port 40021
