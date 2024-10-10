@@ -9,7 +9,7 @@ services:
     ports:
       - 40001:40001
     volumes:
-      - mongo-configsvr-1:/data/db
+      - mongo-configsvr-1:/opt2/mongo_shard
 
   mongo-configsvr-2:
     image: mongo:7
@@ -19,7 +19,7 @@ services:
     ports:
       - 40002:40002
     volumes:
-      - mongo-configsvr-2:/data/db
+      - mongo-configsvr-2:/opt2/mongo_shard
 
   mongo-configsvr-3:
     image: mongo:7
@@ -29,7 +29,7 @@ services:
     ports:
       - 40003:40003
     volumes:
-      - mongo-configsvr-3:/data/db
+      - mongo-configsvr-3:/opt2/mongo_shard
 
   mongo-shard-1-rs-1:
     image: mongo:7
@@ -39,7 +39,7 @@ services:
     ports:
       - 40011:40011
     volumes:
-      - mongo-shard-1-rs-1:/data/db
+      - mongo-shard-1-rs-1:/opt2/mongo_shard
 
   mongo-shard-1-rs-2:
     image: mongo:7
@@ -49,7 +49,7 @@ services:
     ports:
       - 40012:40012
     volumes:
-      - mongo-shard-1-rs-2:/data/db
+      - mongo-shard-1-rs-2:/opt2/mongo_shard
 
   mongo-shard-1-rs-3:
     image: mongo:7
@@ -59,7 +59,7 @@ services:
     ports:
       - 40013:40013
     volumes:
-      - mongo-shard-1-rs-3:/data/db
+      - mongo-shard-1-rs-3:/opt2/mongo_shard
       
 
   mongo-shard-2-rs-1:
@@ -70,7 +70,7 @@ services:
     ports:
       - 40021:40021
     volumes:
-      - mongo-shard-2-rs-1:/data/db
+      - mongo-shard-2-rs-1:/opt2/mongo_shard
 
   mongo-shard-2-rs-2:
     image: mongo:7
@@ -80,7 +80,7 @@ services:
     ports:
       - 40022:40022
     volumes:
-      - mongo-shard-2-rs-2:/data/db
+      - mongo-shard-2-rs-2:/opt2/mongo_shard
 
   mongo-shard-2-rs-3:
     image: mongo:7
@@ -90,7 +90,7 @@ services:
     ports:
       - 40023:40023
     volumes:
-      - mongo-shard-2-rs-3:/data/db
+      - mongo-shard-2-rs-3:/opt2/mongo_shard
       
   mongo-shard-3-rs-1:
     image: mongo:7
@@ -100,7 +100,7 @@ services:
     ports:
       - 40031:40031
     volumes:
-      - mongo-shard-3-rs-1:/data/db
+      - mongo-shard-3-rs-1:/opt2/mongo_shard
 
   mongo-shard-3-rs-2:
     image: mongo:7
@@ -110,7 +110,7 @@ services:
     ports:
       - 40032:40032
     volumes:
-      - mongo-shard-3-rs-2:/data/db
+      - mongo-shard-3-rs-2:/opt2/mongo_shard
 
   mongo-shard-3-rs-3:
     image: mongo:7
@@ -120,7 +120,7 @@ services:
     ports:
       - 40033:40033
     volumes:
-      - mongo-shard-3-rs-3:/data/db
+      - mongo-shard-3-rs-3:/opt2/mongo_shard
       
   mongos-shard:
     image: mongo:7
