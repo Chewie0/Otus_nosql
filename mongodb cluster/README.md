@@ -63,3 +63,6 @@ sh.addShard("shard-replica-set-1/mongo-shard-1-rs-1:40011,mongo-shard-1-rs-2:400
 ```
 sh.addShard("shard-replica-set-2/mongo-shard-2-rs-1:40021,mongo-shard-2-rs-2:40022,mongo-shard-2-rs-3:40023")
 ```
+
+![image](https://github.com/user-attachments/assets/15166f28-07bf-44b7-9d0a-dc4f08a6416e)
+
