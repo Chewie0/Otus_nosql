@@ -15,21 +15,7 @@ rs.initiate({
 ```
 
 ```
-mongosh --port 40001
-```
-```
-rs.initiate({
- "_id": "config-replica-set",
- members : [
- {"_id": 0, "host": "mongo-configsvr-1:40001"},
- {"_id": 1, "host": "mongo-configsvr-2:40002"},
- {"_id": 2, "host": "mongo-configsvr-3:40003" }
- ]
-});
-```
-
-```
-mongosh --port 40002
+mongosh --port 40011
 ```
 ```
 rs.initiate({
@@ -43,7 +29,7 @@ rs.initiate({
 ```
 
 ```
-mongosh --port 40003
+mongosh --port 40021
 ```
 ```
 rs.initiate({
@@ -52,6 +38,20 @@ rs.initiate({
  {"_id" : 0, host : "mongo-shard-2-rs-1:40021"},
  {"_id" : 1, host : "mongo-shard-2-rs-2:40022"},
  {"_id" : 2, host : "mongo-shard-2-rs-3:40023" }
+ ]
+});
+```
+
+```
+mongosh --port 40031
+```
+```
+rs.initiate({
+ "_id" : "shard-replica-set-2",
+ members : [
+ {"_id" : 0, host : "mongo-shard-3-rs-1:40021"},
+ {"_id" : 1, host : "mongo-shard-3-rs-2:40022"},
+ {"_id" : 2, host : "mongo-shard-3-rs-3:40023" }
  ]
 });
 
