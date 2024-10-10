@@ -3,7 +3,7 @@ version: '3'
 services:
   mongos:
     container_name: mongos
-    image: mongo:latest
-    command: mongos --configdb config-replica-set/mongo-configsvr-1:40001,mongo-configsvr-2:40002,mongo-configsvr-3:40003 --port 27017
+    image: mongo:7
+    command: mongos --configdb config-replica-set/mongo-configsvr-1:40001,mongo-configsvr-2:40002,mongo-configsvr-3:40003 --bind_ip_all
     ports:
       - 30000:27017
