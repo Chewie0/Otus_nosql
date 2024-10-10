@@ -122,13 +122,6 @@ services:
     volumes:
       - mongo-shard-3-rs-3:/opt2/mongo_shard
       
-  mongos-shard:
-    image: mongo:7
-    container_name: mongos-shard
-    hostname: mongos-shard
-    command: mongos --configdb config_rs/mongo-configsvr-1:40001,mongo-configsvr-2:40002,mongo-configsvr-3:40003 --bind_ip_all --port 27017
-    ports:
-      - 40100:27017
 
 volumes:
   mongo-configsvr-1:
