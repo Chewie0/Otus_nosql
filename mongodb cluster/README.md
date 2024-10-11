@@ -106,5 +106,21 @@ db.person.getShardDistribution()
 
 
 
+Попробуем поронять инстансы
+Уроним primary сервер shard 1
+
+```
+docker stop mongo-shard-1-rs-1
+```
+```
+mongosh --port 40012
+rs.status()
+```
+mongo-shard-1-rs-2 стал PRIMARY сервером, данные сохранились
+
+<img width="686" alt="image" src="https://github.com/user-attachments/assets/ea9c45f0-f572-4147-901a-247f024aee31">
 
 
+После поднятия mongo-shard-1-rs-1 обратно - сервер стал в роль SECONDARY
+
+<img width="588" alt="image" src="https://github.com/user-attachments/assets/73ec9bd8-06f4-4d84-9626-d50a25581e90">
