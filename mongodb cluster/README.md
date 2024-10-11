@@ -99,7 +99,7 @@ db.settings.updateOne(
 
 ```
 sh.balancerCollectionStatus("test_db.person")
-db.person.getShardDistribution(
+db.person.getShardDistribution()
 ```
 
 <img width="427" alt="image" src="https://github.com/user-attachments/assets/05633c2b-2b24-4896-a918-4ece9a7b7e7a">
