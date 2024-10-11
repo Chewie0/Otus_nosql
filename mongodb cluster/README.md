@@ -1,5 +1,11 @@
 # Кластерные возможности Mongodb
 
+Развернем кластер
+```
+docker compose up -d
+```
+Прокатаем конфиги по нодам
+
 ```
 mongosh --port 40001
 ```
@@ -56,6 +62,7 @@ rs.initiate({
 });
 
 ```
+Добавим шарды к роутеру
 ```
 sh.addShard("shard-replica-set-1/mongo-shard-1-rs-1:40011,mongo-shard-1-rs-2:40012,mongo-shard-1-rs-3:40013")
 ```
@@ -107,7 +114,7 @@ db.person.getShardDistribution()
 
 
 Попробуем поронять инстансы
-Уроним primary сервер shard 1
+Уроним primary сервер mongo-shard-1-rs-1
 
 ```
 docker stop mongo-shard-1-rs-1
@@ -121,6 +128,6 @@ mongo-shard-1-rs-2 стал PRIMARY сервером, данные сохран�
 <img width="686" alt="image" src="https://github.com/user-attachments/assets/ea9c45f0-f572-4147-901a-247f024aee31">
 
 
-После поднятия mongo-shard-1-rs-1 обратно - сервер стал в роль SECONDARY
+После поднятия mongo-shard-1-rs-1 - сервер стал в роль SECONDARY
 
 <img width="588" alt="image" src="https://github.com/user-attachments/assets/73ec9bd8-06f4-4d84-9626-d50a25581e90">
