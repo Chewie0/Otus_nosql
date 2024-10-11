@@ -27,8 +27,6 @@ rs.initiate({
  ]
 });
 ```
-![image](https://github.com/user-attachments/assets/14194df2-9397-4b69-9352-342ebc4932f2)
-
 
 ```
 mongosh --port 40021
@@ -66,5 +64,47 @@ sh.addShard("shard-replica-set-1/mongo-shard-1-rs-1:40011,mongo-shard-1-rs-2:400
 sh.addShard("shard-replica-set-2/mongo-shard-2-rs-1:40021,mongo-shard-2-rs-2:40022,mongo-shard-2-rs-3:40023")
 ```
 
-![image](https://github.com/user-attachments/assets/15166f28-07bf-44b7-9d0a-dc4f08a6416e)
+<img width="719" alt="image" src="https://github.com/user-attachments/assets/67b0f44c-d95f-4c6d-b14c-a69417861d89">
+
+
+Создадим коллекцию и наполним тестовыми данными
+```
+use test_db
+db.createCollection('person')
+sh.shardCollection('person')
+db.person.createIndex({_id: 1})
+```
+
+```
+use admin
+db.runCommand({shardCollection: "test_db.person", key: {_id: 1}})
+sh.status()
+use test_db
+db.person.stats().storageSize / (1024 * 1024) + " MB"
+use config
+db.settings.updateOne(
+ { _id: "chunksize" },
+ { $set: { _id: "chunksize", value: 1 } },
+ { upsert: true }
+)
+```
+
+<img width="356" alt="image" src="https://github.com/user-attachments/assets/57606a01-948c-4b1e-90a2-a0826aec75b5">
+
+
+коллекция разбилась по шардам
+
+<img width="712" alt="image" src="https://github.com/user-attachments/assets/99e1d419-a5fd-4bb9-9001-2a64055e58bb">
+
+
+```
+sh.balancerCollectionStatus("test_db.person")
+db.person.getShardDistribution(
+```
+
+<img width="427" alt="image" src="https://github.com/user-attachments/assets/05633c2b-2b24-4896-a918-4ece9a7b7e7a">
+
+
+
+
 
