@@ -8,8 +8,11 @@ docker-compose up -d
 ```
 docker exec -it cassandra1 nodetool status
 ```
+
 <img width="693" alt="image" src="https://github.com/user-attachments/assets/f1ffbcfa-afe5-478e-9b7e-836e3424d36b">
+
 Подключимся через cqlsh
+
 ```
 sudo docker exec -it cassandra1 cqlsh
 ```
