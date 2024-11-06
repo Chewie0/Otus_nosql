@@ -13,9 +13,10 @@ docker exec -it cassandra1 nodetool status
 ```
 sudo docker exec -it cassandra1 cqlsh
 ```
+
 Создадим keyspace 
+
 ```
-CREATE KEYSPACE test_keyspace
-WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+CREATE KEYSPACE test_keyspace WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
 ```
 
