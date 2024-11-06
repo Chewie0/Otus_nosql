@@ -37,10 +37,58 @@ CREATE TABLE persons (some_id int, some_date date, time timestamp, name text, PR
 insert into books (some_id, name, info) values (1, 'Долгая прогулка', 'interesting book');
 insert into books (some_id, name, info) values (2, 'Ночная смена', 'interesting book');
 insert into books (some_id, name, info) values (3, 'Игра Джералда', 'interesting book');
+insert into books (some_id, name, info) values (4, 'Четыре сезона', 'not interesting book');
 
 insert into persons (some_id, some_date, time, name) values (1, '2024-11-06', '2024-11-06 00:00', 'Андрей');
 insert into persons (some_id, some_date, time, name) values (2, '2024-11-05', '2024-11-05 00:00', 'Василий');
 insert into persons (some_id, some_date, time, name) values (3, '2024-11-04', '2024-11-04 00:00', 'Мария');
 insert into persons (some_id, some_date, time, name) values (4, '2024-11-06', '2024-11-06 00:00', 'Александра');
+insert into persons (some_id, some_date, time, name) values (1, '2024-11-06', '2024-11-06 12:00', 'Елизавета');
+insert into persons (some_id, some_date, time, name) values (1, '2024-11-06', '2024-11-06 14:00', 'Яков');
 
 ```
+
+Создание вторичного индекса 
+
+```
+create index name_index on books (name);
+```
+
+Запросы к таблицам
+
+```
+cqlsh:test_keyspace> select * from books where name = 'Ночная смена';
+
+ some_id | info             | name
+---------+------------------+--------------
+       2 | interesting book | Ночная смена
+
+(1 rows)
+
+```
+
+```
+cqlsh:test_keyspace> select * from persons where some_id = 1 and some_date = '2024-11-06' order by time;
+
+ some_id | some_date  | time                            | name
+---------+------------+---------------------------------+-----------
+       1 | 2024-11-06 | 2024-11-06 00:00:00.000000+0000 |    Андрей
+       1 | 2024-11-06 | 2024-11-06 12:00:00.000000+0000 | Елизавета
+       1 | 2024-11-06 | 2024-11-06 14:00:00.000000+0000 |      Яков
+
+(3 rows)
+
+```
+
+```
+cqlsh:test_keyspace> select * from books where info = 'interesting book' ALLOW FILTERING ;
+
+ some_id | info             | name
+---------+------------------+-----------------
+       1 | interesting book | Долгая прогулка
+       2 | interesting book |    Ночная смена
+       3 | interesting book |   Игра Джералда
+
+(3 rows)
+```
+
