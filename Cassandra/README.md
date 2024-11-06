@@ -38,9 +38,9 @@ insert into books (some_id, name, info) values (1, 'Долгая прогулк�
 insert into books (some_id, name, info) values (2, 'Ночная смена', 'interesting book');
 insert into books (some_id, name, info) values (3, 'Игра Джералда', 'interesting book');
 
-insert into persons (some_id, some_date, time, name) values (1, '2024-11-06', '2024-11-06 00:00' 'Андрей');
-insert into persons (some_id, some_date, time, name) values (2, '2024-11-05', '2024-11-05 00:00' 'Василий');
-insert into persons (some_id, some_date, time, name) values (3, '2024-11-04', '2024-11-04 00:00' 'Мария');
-insert into persons (some_id, some_date, time, name) values (4, '2024-11-06', '2024-11-06 00:00' 'Александра');
+insert into persons (some_id, some_date, time, name) values (1, '2024-11-06', '2024-11-06 00:00', 'Андрей');
+insert into persons (some_id, some_date, time, name) values (2, '2024-11-05', '2024-11-05 00:00', 'Василий');
+insert into persons (some_id, some_date, time, name) values (3, '2024-11-04', '2024-11-04 00:00', 'Мария');
+insert into persons (some_id, some_date, time, name) values (4, '2024-11-06', '2024-11-06 00:00', 'Александра');
 
 ```
