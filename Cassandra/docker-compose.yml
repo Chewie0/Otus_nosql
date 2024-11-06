@@ -1,30 +1,45 @@
-version: '3'
+version: "3.3"
 
 services:
-  cassandra1:
+
+  cassandra-seed:
     image: cassandra:latest
-    container_name: cassandra1
     ports:
       - "9042:9042"
+    volumes:
+      - "cassandra_data_seed:/var/lib/cassandra"
     environment:
-      - CASSANDRA_SEEDS=cassandra1,cassandra2,cassandra3
-    networks:
-      - cassandra-network
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+
+
+  cassandra1:
+    image: cassandra:latest
+    volumes:
+      - "cassandra_data_1:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+    depends_on:
+      - cassandra-seed
+
   cassandra2:
     image: cassandra:latest
-    container_name: cassandra2
+    volumes:
+      - "cassandra_data_2:/var/lib/cassandra"
     environment:
-      - CASSANDRA_SEEDS=cassandra1,cassandra2,cassandra3
-    networks:
-      - cassandra-network
-  cassandra3:
-    image: cassandra:latest
-    container_name: cassandra3
-    environment:
-      - CASSANDRA_SEEDS=cassandra1,cassandra2,cassandra3
-    networks:
-      - cassandra-network
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+    depends_on:
+      - cassandra-seed
 
-networks:
-  cassandra-network:
-    driver: bridge​
+volumes:
+  cassandra_data_seed:
+  cassandra_data_1:
+  cassandra_data_2:
