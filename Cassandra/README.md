@@ -21,6 +21,14 @@ sudo docker exec -it cassandra1 cqlsh
 
 ```
 CREATE KEYSPACE test_keyspace WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
-use test_keyspace;
 ```
+
+Переключимся на созданный keyspace и создадим таблицы
+
+```
+CREATE TABLE books (some_id int primary key, name text, info text);
+
+CREATE TABLE persons (some_id int, some_date date, time timestamp, name text, PRIMARY KEY ((some_id, some_date), time));
+```
+
 
