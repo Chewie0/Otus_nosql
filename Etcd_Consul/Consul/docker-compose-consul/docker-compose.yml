@@ -43,6 +43,18 @@ services:
      - consul
     command: "agent -bootstrap-expect=3"
 
+  consul-server4:
+    # image: hashicorp/consul:1.10.0
+    image: hashicorp/consul:latest
+    container_name: consul-server4
+    hostname: consul-server4
+    restart: always
+    volumes:
+     - ./server4.json:/consul/config/server4.json:ro
+     - ./certs/:/consul/config/certs/:ro
+    networks:
+     - consul
+    command: "agent -bootstrap-expect=3"
 
   nginx1:
     image: consul-nginx:latest
